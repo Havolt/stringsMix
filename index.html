@@ -22,7 +22,7 @@
   let twoArr = [];
   let combArr = [];
   let finalArr = [];
-  let finalStr;
+  let finalStr = '';
 
 
   function listIt(str, name){
@@ -96,18 +96,17 @@
 
   function sortFinal(arr){
 
-
     for(var i = 0; i < arr.length; i++){
-      if(arr.arr[i].length == largestStr){
+      if(arr[i].arr.length == largestStr){
         finalStr += arr[i].name + ':' + arr[i].arr + '/';
-        arr.splice(i, 1);
-        i--;
+        console.log(arr[i].arr);
       }
-    }
 
+    }
+    console.log('doop');
     largestStr--;
     if(largestStr > 1){
-      sortFinal();
+      sortFinal(arr);
     }
 
   }
@@ -125,8 +124,14 @@
   findLongest(combArr);
   sortFinal(finalArr);
 
+  finalStr = finalStr.split('').slice(0, finalStr.length-1).join('');
   console.log(finalStr)
+
+  document.body.innerHTML = finalStr;
 }
+
+  mix("looping is fun but dangerous", "less dangerous than coding")
+
 
     </script>
   </body>
