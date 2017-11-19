@@ -18,12 +18,16 @@
 
 
   let largestStr = 0;
+  let largestStr2= 0;
   let oneArr = [];
   let twoArr = [];
   let combArr = [];
   let finalArr = [];
+  let fixedList = [];
   let finalStr = '';
   let runner = 1;
+  const alphRun = 97;
+  const alphEnd = 122
 
 
   function listIt(str, name){
@@ -63,6 +67,7 @@
       temp.arr = arr[i];
       if(temp.arr.length > largestStr && temp.arr[0] !== ' '){
         largestStr = temp.arr.length;
+        largestStr2 = temp.arr.length;
       }
       combArr.push(temp)
     }
@@ -72,12 +77,15 @@
     for(var i = 0; i < arr.length; i++){
     let sameStr = false;
       for(var j = 0; j < arr.length; j++){
+        //if(arr[i].arr[0] == 's' || arr[i].arr[0] == 'f'){console.log(arr[i])}
         if((arr[i].arr[0] == arr[j].arr[0]) && (i !== j)){
+
           sameStr = true;
           if(arr[i].arr.length > arr[j].arr.length){
             finalArr.push(arr[i]);
           }
           else if(arr[j].arr.length > arr[i].arr.length){
+
             finalArr.push(arr[j]);
           }
           else{
@@ -95,6 +103,13 @@
     }
   }
 
+  function fixList(arr){
+
+    
+
+
+  }
+
   function sortFinal(arr){
 
     for(var n = 1; n <= 2; n++){
@@ -108,10 +123,8 @@
     for(var i = 0; i < arr.length; i++){
       if(arr[i].arr.length == largestStr && arr[i].arr[0] !== ' ' && largestStr > 1 && arr[i].name == '='){
         finalStr += arr[i].name + ':' + arr[i].arr + '/';
-        console.log(arr[i].arr);
       }
     }
-    console.log('doop');
     largestStr--;
     if(largestStr > 1){
       sortFinal(arr);
@@ -125,20 +138,25 @@
   listIt(s2, 'two');
   removeCap(oneArr);
   removeCap(twoArr);
+  console.log(twoArr)
   oneArr.sort();
   twoArr.sort();
+
   combine(oneArr, '1');
   combine(twoArr, '2');
+
   findLongest(combArr);
+  fixList(finalArr);
   sortFinal(finalArr);
 
-  finalStr = finalStr.split('').slice(0, finalStr.length-1).join('');
-  console.log(finalStr)
+  console.log(finalArr)
 
-  document.body.innerHTML = finalStr;
+  finalStr = finalStr.split('').slice(0, finalStr.length-1).join('');
+
+  //document.body.innerHTML = finalStr;
 }
 
-  mix("looping is fun but dangerous", "less dangerous than coding")
+  mix(" In many languages", " there's a pair of functions")
 
 
     </script>
