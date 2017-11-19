@@ -23,6 +23,7 @@
   let combArr = [];
   let finalArr = [];
   let finalStr = '';
+  let runner = 1;
 
 
   function listIt(str, name){
@@ -96,12 +97,19 @@
 
   function sortFinal(arr){
 
+    for(var n = 1; n <= 2; n++){
+      for(var i = 0; i < arr.length; i++){
+        if(arr[i].arr.length == largestStr && (arr[i].arr[0] !== ' ') && (largestStr > 1) && (arr[i].name == n)){
+          finalStr += arr[i].name + ':' + arr[i].arr + '/';
+          console.log(arr[i].arr);
+        }
+      }
+    }
     for(var i = 0; i < arr.length; i++){
-      if(arr[i].arr.length == largestStr){
+      if(arr[i].arr.length == largestStr && arr[i].arr[0] !== ' ' && largestStr > 1 && arr[i].name == '='){
         finalStr += arr[i].name + ':' + arr[i].arr + '/';
         console.log(arr[i].arr);
       }
-
     }
     console.log('doop');
     largestStr--;
