@@ -13,6 +13,8 @@
 
     <script>
 
+    //"need to finish fixList to make alphabetic value effect articles of same length"
+
     function mix(s1, s2) {
   // your code
 
@@ -103,13 +105,6 @@
     }
   }
 
-  function fixList(arr){
-
-    
-
-
-  }
-
   function sortFinal(arr){
 
     for(var n = 1; n <= 2; n++){
@@ -132,6 +127,23 @@
 
   }
 
+  function fixList(arr){
+    //Check the length of the arr[i].arr
+    for(var g = largestStr2; g > 1; g--){
+      console.log(g)
+      //Check name of array (1 or 2)
+      for(var h = 1; h <= 2; h++){
+        //Check Each individual arr element
+        for(var i = 0; i < arr.length; i++){
+          if(arr[i].name == h && arr[i].arr.length == g){
+            console.log(arr[i]);
+          }
+        }
+      }
+    }
+
+  }
+
 
 
   listIt(s1, 'one');
@@ -146,14 +158,15 @@
   combine(twoArr, '2');
 
   findLongest(combArr);
-  fixList(finalArr);
+
   sortFinal(finalArr);
 
-  console.log(finalArr)
+  fixList(finalArr);
+
 
   finalStr = finalStr.split('').slice(0, finalStr.length-1).join('');
 
-  //document.body.innerHTML = finalStr;
+
 }
 
   mix(" In many languages", " there's a pair of functions")
