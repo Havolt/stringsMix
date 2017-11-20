@@ -18,7 +18,6 @@
     function mix(s1, s2) {
   // your code
 
-
   let largestStr = 0;
   let largestStr2= 0;
   let oneArr = [];
@@ -27,19 +26,15 @@
   let finalArr = [];
   let fixedList = [];
   let finalStr = '';
-  let runner = 1;
   const alphRun = 97;
   const alphEnd = 122
 
 
   function listIt(str, name){
     str = str.split('');
-
     let currArr;
-
     if(name == 'one'){currArr = oneArr}
     else{currArr = twoArr}
-
     for(var i = 0; i < str.length; i++){
       let repStr = false;
       for(var j = 0; j < currArr.length; j++){
@@ -79,15 +74,12 @@
     for(var i = 0; i < arr.length; i++){
     let sameStr = false;
       for(var j = 0; j < arr.length; j++){
-        //if(arr[i].arr[0] == 's' || arr[i].arr[0] == 'f'){console.log(arr[i])}
         if((arr[i].arr[0] == arr[j].arr[0]) && (i !== j)){
-
           sameStr = true;
           if(arr[i].arr.length > arr[j].arr.length){
             finalArr.push(arr[i]);
           }
           else if(arr[j].arr.length > arr[i].arr.length){
-
             finalArr.push(arr[j]);
           }
           else{
@@ -105,85 +97,57 @@
     }
   }
 
-  function sortFinal(arr){
-
-    for(var n = 1; n <= 2; n++){
-      for(var i = 0; i < arr.length; i++){
-        if(arr[i].arr.length == largestStr && (arr[i].arr[0] !== ' ') && (largestStr > 1) && (arr[i].name == n)){
-          finalStr += arr[i].name + ':' + arr[i].arr + '/';
-          console.log(arr[i].arr);
-        }
-      }
-    }
-    for(var i = 0; i < arr.length; i++){
-      if(arr[i].arr.length == largestStr && arr[i].arr[0] !== ' ' && largestStr > 1 && arr[i].name == '='){
-        finalStr += arr[i].name + ':' + arr[i].arr + '/';
-      }
-    }
-    largestStr--;
-    if(largestStr > 1){
-      sortFinal(arr);
-    }
-
-  }
 
   function fixList(arr){
-
     //Check the length of the arr[i].arr
     for(var g = largestStr2; g > 1; g--){
-      console.log(arr)
       //Check name of array (1 or 2)
-      for(var h = 1; h <= 2; h++){
+      for(var h = 1; h <= 3; h++){
         //Check alphabet is correct
         for(var a = alphRun; a <= alphEnd; a++)
           //Check Each individual arr element
           for(var i = 0; i < arr.length; i++){
             if((arr[i].name == h) && (arr[i].arr.length == g) && arr[i].arr[0].charCodeAt(0) == a){
-              console.log(arr[i]);
               fixedList.push(arr[i])
             }
-            if(h == 2){
-              if((arr[i].name == '=') && (arr[i].arr.length == g)  && (arr[i].arr[0].charCodeAt(0) == a)){
-                console.log(arr[i]);
-                fixedList.push(arr[i]);
-              }
+            if((h == 3) && (arr[i].name == '=') && (arr[i].arr.length == g) && arr[i].arr[0].charCodeAt(0) == a){
+              fixedList.push(arr[i])
             }
           }
         }
       }
-      console.log(fixedList);
     }
 
   function createStr(arr){
-
+    for(var i = 0; i < arr.length; i++){
+      finalStr += arr[i].name + ':' + arr[i].arr + '/';
+    }
+    finalStr = finalStr.split('').slice(0, finalStr.length-1).join('');
   }
 
 
-
-  listIt(s1, 'one');
-  listIt(s2, 'two');
-  removeCap(oneArr);
-  removeCap(twoArr);
-  console.log(twoArr)
-  oneArr.sort();
-  twoArr.sort();
-
-  combine(oneArr, '1');
-  combine(twoArr, '2');
-
-  findLongest(combArr);
-
-  //sortFinal(finalArr);
-  fixList(finalArr);
-  createStr(fixedList);
+  (function init(){
+    listIt(s1, 'one');
+    listIt(s2, 'two');
+    removeCap(oneArr);
+    removeCap(twoArr);
+    oneArr.sort();
+    twoArr.sort();
+    combine(oneArr, '1');
+    combine(twoArr, '2');
+    findLongest(combArr);
+    fixList(finalArr);
+    createStr(fixedList);
+    console.log(finalStr)
+  })()
 
 
-  finalStr = finalStr.split('').slice(0, finalStr.length-1).join('');
+
 
 
 }
 
-  mix(" zzzz In many languages", " there's a pair aof functions")
+  mix("Are they here", "yes, they are here")
 
 
     </script>
